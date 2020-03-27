@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        body {
+            -webkit-touch-callout: none;
+            -webkit-text-size-adjust: none;
+            -webkit-user-select: none;
+            background-image: linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+            background-image: -webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+            background-image: -ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+            background-image: -webkit-gradient(linear,
+                    left top,
+                    left bottom,
+                    color-stop(0, rgb(188, 221, 136)),
+                    color-stop(0.51, rgb(90, 211, 211)));
+            background-attachment: fixed;
+            font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            text-transform: uppercase;
+            width: 100%;
+            text-align: center;
+        }
+
+        .app {
+            background-position: center;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .name {
+            font-size: 20px;
+            font-weight: normal;
+            overflow: visible;
+            text-align: center;
+        }
+
+        .boxname {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        h6 {
+            font-size: 10px;
+            font-weight: normal;
+            overflow: visible;
+            text-align: center;
+        }
+
+        .button{
+            background-color:yellowgreen;
+            height: 40px;
+            width: 100px;
+            border-radius: 40%;
+        }
+    </style>
+    <title>Attendance</title>
+</head>
+
+<body>
+
+    <div class="app">
+        <h1>Find your Details</h1>
+        <!-- <img src="{{ url_for("static", filename="/img/logo.png") }}" style="height: 250px;"> -->
+        <img src="img/form.png">
+        <form method="post" action="{{ url_for("capture") }}">
+            <label for="fname" class="name">First name</label><br>
+            <input type="text" class="boxname" value="Enter First Name"><br>
+            <label for="lname" class="name">Last name</label><br>
+            <input type="text" class="boxname" value="Enter Last Name"><br><br>
+            <input type="submit" class="button" value="Submit">
+        </form>
+    </div>
+
+</body>
+
+</html>
