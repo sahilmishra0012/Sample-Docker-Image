@@ -45,6 +45,10 @@
             text-align: center;
         }
 
+        #MyTable{
+            margin:auto;
+        }
+
         table,
         tr,
         th,
@@ -58,34 +62,11 @@
 <body>
 
     <div class="app">
-        <img src="img/tick.png" style="width:128px;height:128px;">
+        <img src="{{ url_for("static", filename="/img/tick.png") }}" style="width:128px;height:128px;">
         <h1>Details Found!!</h1>
-        <br>
-        <br>
-        <br>
-        <table align="left" width="100%">
-            <tr>
-                <th>First Name</th>
-                <td>XXX XXX</td>
-            </tr>
-            <tr>
-                <th>Last Name</th>
-                <td>YYY YYY</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>XXX XXXX XXXX</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>XXX XXXX XXXX</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>XXX XXXX XXXX</td>
-            </tr>
-
-        </table>
+        {% for table in tables %}
+            {{ table|safe }}
+        {% endfor %}
     </div>
 
 </body>

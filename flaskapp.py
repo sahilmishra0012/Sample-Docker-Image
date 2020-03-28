@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request,redirect
-from cv2 import cv2
-import sys
-import os
 import db_extraction
+import pandas as pd
 
 app = Flask(__name__,template_folder='')
 
@@ -15,17 +13,14 @@ def index():
 @app.route('/capture', methods=['GET','POST'])
 def capture():
     if request.method == 'POST':
-        print(request.files['image'])
-        image = request.files["image"]
-        image.save(os.path.join(app.config["IMAGE_UPLOADS"], 'IM12.jpg')) 
-        path='/home/samkiller007/Downloads/Projects/Machine Learning/Automated Attendance System/Dataset/Images'
-        embeddings=image_embedding.generate_image_encoding(path)
-        k=db_extraction.get_student(embeddings)
-        if k==('Not Found','Not Found'):
-            return render_template('notfound.html')
+        bgroup=request.form['bgroup']
+        output=db_extraction.get_person(bgroup)
+        if len(output)!=0:
+            df = pd.DataFrame(data=output,columns=['First Name','Last Name','Blood Group','Address','Phone Number'])
+            df.head()
+            return render_template('found.html',tables=[df.to_html(header=True,index=False,table_id='MyTable',justify='center')], titles=df.columns.values)
         else:
-            data={'name':k[1],'roll':k[0]}
-            return render_template('found.html',data=data)
+            return render_template('notfound.html')
     return render_template('notfound.html')
 
 if __name__ == '__main__':

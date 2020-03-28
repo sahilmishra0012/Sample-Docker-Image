@@ -39,7 +39,7 @@
         }
 
         .name {
-            font-size: 20px;
+            font-size: 50px;
             font-weight: normal;
             overflow: visible;
             text-align: center;
@@ -48,6 +48,8 @@
         .boxname {
             font-size: 20px;
             text-align: center;
+            height: 50px;
+
         }
 
         h6 {
@@ -71,14 +73,11 @@
 
     <div class="app">
         <h1>Find your Details</h1>
-        <!-- <img src="{{ url_for("static", filename="/img/logo.png") }}" style="height: 250px;"> -->
-        <img src="img/form.png">
+        <img src="{{ url_for("static", filename="/img/form.png") }}">
         <form method="post" action="{{ url_for("capture") }}">
-            <label for="fname" class="name">First name</label><br>
-            <input type="text" class="boxname" value="Enter First Name"><br>
-            <label for="lname" class="name">Last name</label><br>
-            <input type="text" class="boxname" value="Enter Last Name"><br><br>
-            <input type="submit" class="button" value="Submit">
+            <label class="name">Blood Group</label><br>
+            <input type="text" class="boxname" name="bgroup" placeholder="Input Format : O+"><br>
+            <input type="submit" class="button" value="SUBMIT">
         </form>
     </div>
 
