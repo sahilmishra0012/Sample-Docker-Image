@@ -1,16 +1,12 @@
-import mysql.connector
-
 def get_person(bg):
+    data=[('Sahil', 'Mishra', 'O+', '12 Madhupuram Colony, IIM Road off Sitapur Road, Lucknow, 226020', '7007059528'),
+          ('Shikhar', 'Mishra', 'B+', '12 Madhupuram Colony, IIM Road off Sitapur Road, Lucknow, 226020', '9793717669'),
+          ('Vinod Kumar', 'Mishra', 'B+', '12 Madhupuram Colony, IIM Road off Sitapur Road, Lucknow, 226020', '9935861001')]
 
-    mydb = mysql.connector.connect(user='samkiller007', password='Incorrect@11',host='localhost',database='docker')
-
-    mycursor = mydb.cursor()
-
-    query="SELECT * FROM bloodgroup where blood_group like \""+bg+"\""
-    data=[]
-    mycursor.execute(query)
-    for i in mycursor:
-        print(i)
-        data.append(i)
-    
-    return data
+    data1=[]
+    for i in data:
+        if i[2]==bg:
+            print(i)
+            data1.append(i)
+        
+    return data1
