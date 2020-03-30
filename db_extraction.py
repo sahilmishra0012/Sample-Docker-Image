@@ -1,12 +1,15 @@
+import pandas as pd
+
 def get_person(bg):
-    data=[('Sahil', 'Mishra', 'O+', '12 Madhupuram Colony, IIM Road off Sitapur Road, Lucknow, 226020', '7007059528'),
-          ('Shikhar', 'Mishra', 'B+', '12 Madhupuram Colony, IIM Road off Sitapur Road, Lucknow, 226020', '9793717669'),
-          ('Vinod Kumar', 'Mishra', 'B+', '12 Madhupuram Colony, IIM Road off Sitapur Road, Lucknow, 226020', '9935861001')]
+    
+    data = pd.read_csv('data.csv')
+    
+
 
     data1=[]
-    for i in data:
-        if i[2]==bg:
-            print(i)
-            data1.append(i)
-        
+    for i in data.iterrows():
+        print(i[1][2])
+        if i[1][2]==bg:
+            data1.append(tuple(i[1]))
+
     return data1
